@@ -1,4 +1,4 @@
-## API Endpoints
+### API Endpoints
 ## Ajouter une nouvelle voiture :
 POST /voitures
 

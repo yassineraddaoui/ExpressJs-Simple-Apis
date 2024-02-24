@@ -1,9 +1,35 @@
 const express = require('express');
-
+const dotenv=require('dotenv')
+const mongoose=require('mongoose')
 const app = express();
-
+dotenv.config()
+const MONGODB_URI=process.env.MONGODB_URI;
 app.use(express.json());
+mongoose.connect(MONGODB_URI)
+    .then(()=>{
+        console.log("Hello !")
+    })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 let voitures = [
     { id: 1, name: "clio" },
     { id: 2, name: "megane" },
@@ -21,8 +47,10 @@ app.post('/voitures', (req, res) => {
     res.json("car created");
 });
 
-app.get('/voitures', (req, res) => {
+app.get('/voitures', (req, res,next) => {
     res.json(voitures);
+    next();
+    
 });
 
 app.get('/voitures/:id', (req, res) => {
